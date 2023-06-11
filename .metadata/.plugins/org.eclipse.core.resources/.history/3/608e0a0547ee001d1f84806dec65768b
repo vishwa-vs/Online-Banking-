@@ -1,0 +1,41 @@
+package com.example.demo.model;
+
+import java.util.Set;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Entity
+@Table(name = "User")
+public class UserEntity {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "UserId")
+	private int UserId;
+	@Column(name = "userName")
+	private String userName;
+	@Column(name = "role")
+	private String role;
+	@Column(name = "PhoneNumber")
+	private int phoneNumber;
+	@Column(name = "password")
+	private String password;
+	@Column(name = "eMail")
+	private String eMail;
+	@OneToOne()
+	private AddressEntity address;
+	
+	
+}

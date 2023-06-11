@@ -1,0 +1,44 @@
+package com.example.demo.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.example.demo.model.UserEntity;
+import com.example.demo.repository.UserRepository;
+
+@Service 
+public class UserService {
+
+	
+	
+	@Autowired
+	private UserRepository userRepository;
+	
+	
+	public UserEntity addUser(@RequestBody UserEntity user) {
+		return userRepository.save(user);
+	}
+	
+	public Optional<UserEntity> viewUser(@PathVariable int userId) {
+		return userRepository.findById(userId);
+	}
+	
+	public String removeUser(@PathVariable int userId) {
+		userRepository.deleteById(userId);
+		return "User Removed Successfully";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
